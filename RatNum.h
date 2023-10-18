@@ -35,6 +35,8 @@ public:
 	RatNum operator-(const RatNum& r) const;
 	RatNum operator*(const RatNum& r) const;
 	RatNum operator/(const RatNum& r) const;
+	RatNum operator%(const RatNum& r) const;
+	RatNum operator^(const RatNum& r) const;
 	bool operator==(const RatNum& r) const;
 	bool operator<(const RatNum& r) const;
 
@@ -50,10 +52,19 @@ public:
 	bool isPosInfinity() const { return numer > 0 && denom == 0; }
 	bool isNaN() const { return numer == 0 && denom == 0; }
 	bool isNegInfinity() const { return numer < 0 && denom == 0; }
-
 };
 
 std::ostream& operator<<(std::ostream& os, const RatNum& r);
 int64_t gcd(int64_t a, int64_t b);
+
+// Static RatNums
+namespace RatNums {
+	const RatNum POS_INFINITY = RatNum(1, 0);
+	const RatNum ONE = RatNum(1);
+	const RatNum ZERO = RatNum(0);
+	const RatNum NAN = RatNum(0, 0);
+	const RatNum NEG_ONE = RatNum(-1);
+	const RatNum NEG_INFINITY = RatNum(-1, 0);
+}
 
 #endif
